@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Event Spin Counter",
+  "description": "A manual game assistant for tracking in-game spin events with a floating overlay, detailed history, and advanced statistics.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

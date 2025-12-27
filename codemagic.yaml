@@ -1,0 +1,28 @@
+
+workflows:
+  android-release:
+    name: Android Release Build
+    max_build_duration: 30
+    instance_type: mac_mini_m1
+    environment:
+      groups:
+        - google_play_credentials
+      vars:
+        PACKAGE_NAME: "com.eventspincounter.app"
+    scripts:
+      - name: Install dependencies
+        script: |
+          ./gradlew dependencies
+      - name: Build Android APK
+        script: |
+          ./gradlew assembleProRelease
+      - name: Build Android App Bundle (AAB)
+        script: |
+          ./gradlew bundleProRelease
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
+      - app/build/outputs/bundle/**/*.aab
+    publishing:
+      email:
+        recipients:
+          - your-email@example.com
